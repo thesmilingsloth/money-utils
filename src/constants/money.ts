@@ -1,4 +1,4 @@
-import { Decimal } from "decimal.js";
+import { Decimal } from 'decimal.js';
 
 export const DEFAULT_ROUNDING_MODE = Decimal.ROUND_HALF_EVEN;
 

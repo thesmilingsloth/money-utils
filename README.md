@@ -71,24 +71,24 @@ pnpm add @thesmilingsloth/money-utils
 ## Quick Start
 
 ```typescript
-import { Money, Currency } from "@thesmilingsloth/money-utils";
+import { Money, Currency } from '@thesmilingsloth/money-utils';
 
 // Create money instances
-const price = new Money("99.99", "USD");
+const price = new Money('99.99', 'USD');
 const quantity = 2;
 
 // Perform calculations
 const subtotal = price.multiply(quantity);
-const tax = subtotal.multiply("0.2"); // 20% tax
+const tax = subtotal.multiply('0.2'); // 20% tax
 const total = subtotal.add(tax);
 
 // Format output
 console.log(total.toString()); // "$239.98"
-console.log(total.toLocaleString("de-DE")); // "239,98 $"
+console.log(total.toLocaleString('de-DE')); // "239,98 $"
 
 // Work with different currencies
-const euro = new Money("100", "EUR");
-const yen = new Money("10000", "JPY");
+const euro = new Money('100', 'EUR');
+const yen = new Money('10000', 'JPY');
 
 // Compare amounts (same currency)
 console.log(price.lessThan(total)); // true
@@ -102,16 +102,16 @@ The `Money` class is immutable and handles all monetary operations:
 
 ```typescript
 // Basic operations
-const amount = new Money("100.50", "USD");
+const amount = new Money('100.50', 'USD');
 const doubled = amount.multiply(2);
-const withTax = doubled.add(doubled.multiply("0.1")); // Add 10% tax
+const withTax = doubled.add(doubled.multiply('0.1')); // Add 10% tax
 
 // Comparison
-const isExpensive = withTax.greaterThan(new Money("200", "USD"));
+const isExpensive = withTax.greaterThan(new Money('200', 'USD'));
 
 // Formatting
 console.log(withTax.toString()); // "$221.10"
-console.log(withTax.toLocaleString("ja-JP")); // "￥221.10"
+console.log(withTax.toLocaleString('ja-JP')); // "￥221.10"
 ```
 
 ### Currency Management
@@ -126,19 +126,19 @@ const btc = Currency.BTC;
 
 // Custom currency registration
 Currency.register({
-  name: "Custom Token",
-  code: "CTK",
-  symbol: "⚡",
-  symbolPosition: "prefix",
+  name: 'Custom Token',
+  code: 'CTK',
+  symbol: '⚡',
+  symbolPosition: 'prefix',
   decimals: 6,
-  minorUnits: "1000000",
-  decimalSeparator: ".",
-  thousandsSeparator: ",",
+  minorUnits: '1000000',
+  decimalSeparator: '.',
+  thousandsSeparator: ',',
   isCrypto: true,
 });
 
 // Use custom currency
-const tokenAmount = new Money("1000.123456", "CTK");
+const tokenAmount = new Money('1000.123456', 'CTK');
 ```
 
 ## Default Options & Configurations
@@ -156,11 +156,11 @@ const defaultMoneyOptions = {
 };
 
 // Example with custom options
-const amount = new Money("100.555", "USD", {
+const amount = new Money('100.555', 'USD', {
   decimals: 3, // Override default decimal places
   displayDecimals: 2, // Show only 2 decimals in formatting
   roundingMode: ROUNDING_MODE.ROUND_DOWN,
-  symbol: "USD", // Custom symbol instead of "$"
+  symbol: 'USD', // Custom symbol instead of "$"
 });
 ```
 
@@ -171,35 +171,35 @@ Built-in currencies come with pre-configured defaults. Here are some examples:
 ```typescript
 // USD Configuration
 const USDDefaults = {
-  name: "US Dollar",
-  code: "USD",
-  symbol: "$",
-  symbolPosition: "prefix",
+  name: 'US Dollar',
+  code: 'USD',
+  symbol: '$',
+  symbolPosition: 'prefix',
   decimals: 2,
-  minorUnits: "100",
-  decimalSeparator: ".",
-  thousandsSeparator: ",",
+  minorUnits: '100',
+  decimalSeparator: '.',
+  thousandsSeparator: ',',
   isCrypto: false,
 };
 
 // BTC Configuration
 const BTCDefaults = {
-  name: "Bitcoin",
-  code: "BTC",
-  symbol: "₿",
-  symbolPosition: "prefix",
+  name: 'Bitcoin',
+  code: 'BTC',
+  symbol: '₿',
+  symbolPosition: 'prefix',
   decimals: 8,
-  minorUnits: "100000000",
-  decimalSeparator: ".",
-  thousandsSeparator: ",",
+  minorUnits: '100000000',
+  decimalSeparator: '.',
+  thousandsSeparator: ',',
   isCrypto: true,
 };
 
 // Example of using defaults vs custom options
-const defaultUSD = new Money("100", "USD"); // Uses USD defaults
-const customUSD = new Money("100", "USD", {
+const defaultUSD = new Money('100', 'USD'); // Uses USD defaults
+const customUSD = new Money('100', 'USD', {
   decimals: 4, // Override default 2 decimals
-  symbol: "US$", // Override default "$" symbol
+  symbol: 'US$', // Override default "$" symbol
 });
 ```
 
@@ -209,20 +209,20 @@ The library uses the following default formatting behavior:
 
 ```typescript
 // Default toString() behavior
-const amount = new Money("1234.56", "USD");
+const amount = new Money('1234.56', 'USD');
 console.log(amount.toString()); // "$1,234.56"
 
 // Default toLocaleString() options
 console.log(amount.toLocaleString()); // Uses browser's default locale
-console.log(amount.toLocaleString("en-US")); // "$1,234.56"
-console.log(amount.toLocaleString("de-DE")); // "1.234,56 $"
+console.log(amount.toLocaleString('en-US')); // "$1,234.56"
+console.log(amount.toLocaleString('de-DE')); // "1.234,56 $"
 
 // Custom format options
 console.log(
-  amount.toLocaleString("en-US", {
-    style: "currency",
-    currencyDisplay: "name", // "1,234.56 US dollars"
-  })
+  amount.toLocaleString('en-US', {
+    style: 'currency',
+    currencyDisplay: 'name', // "1,234.56 US dollars"
+  }),
 );
 ```
 
@@ -230,16 +230,16 @@ console.log(
 
 ```typescript
 // Default rounding mode is ROUND_HALF_UP
-const amount = new Money("100.555", "USD");
+const amount = new Money('100.555', 'USD');
 console.log(amount.toString()); // "$100.56"
 
 // Different rounding modes
-const roundDown = new Money("100.555", "USD", {
+const roundDown = new Money('100.555', 'USD', {
   roundingMode: ROUNDING_MODE.ROUND_DOWN,
 });
 console.log(roundDown.toString()); // "$100.55"
 
-const roundUp = new Money("100.555", "USD", {
+const roundUp = new Money('100.555', 'USD', {
   roundingMode: ROUNDING_MODE.ROUND_UP,
 });
 console.log(roundUp.toString()); // "$100.56"
@@ -250,9 +250,9 @@ console.log(roundUp.toString()); // "$100.56"
 ### Rounding Modes
 
 ```typescript
-import { Money, ROUNDING_MODE } from "@thesmilingsloth/money-utils";
+import { Money, ROUNDING_MODE } from '@thesmilingsloth/money-utils';
 
-const amount = new Money("100.555", "USD", {
+const amount = new Money('100.555', 'USD', {
   roundingMode: ROUNDING_MODE.ROUND_HALF_UP,
   decimals: 2,
 });
@@ -267,7 +267,7 @@ console.log(amount.round(1).toString()); // "$100.60"
 Split amounts while handling remainders:
 
 ```typescript
-const total = new Money("100", "USD");
+const total = new Money('100', 'USD');
 
 // Split by ratios
 const shares = total.allocate([2, 3, 5]); // 20:30:50 ratio
@@ -284,7 +284,7 @@ const equalShares = total.allocate([1, 1, 1]);
 Flexible formatting options:
 
 ```typescript
-const amount = new Money("1234567.89", "USD");
+const amount = new Money('1234567.89', 'USD');
 
 // Basic formatting
 console.log(amount.toString()); // "$1,234,567.89"
@@ -292,16 +292,16 @@ console.log(amount.formattedValue()); // "1,234,567.89"
 console.log(amount.formattedValueWithSymbol()); // "$1,234,567.89"
 
 // Localized formatting
-console.log(amount.toLocaleString("en-US")); // "$1,234,567.89"
-console.log(amount.toLocaleString("de-DE")); // "1.234.567,89 $"
-console.log(amount.toLocaleString("ja-JP")); // "￥1,234,567.89"
+console.log(amount.toLocaleString('en-US')); // "$1,234,567.89"
+console.log(amount.toLocaleString('de-DE')); // "1.234.567,89 $"
+console.log(amount.toLocaleString('ja-JP')); // "￥1,234,567.89"
 
 // Custom format options
 console.log(
-  amount.toLocaleString("en-US", {
-    style: "currency",
-    currencyDisplay: "name",
-  })
+  amount.toLocaleString('en-US', {
+    style: 'currency',
+    currencyDisplay: 'name',
+  }),
 ); // "1,234,567.89 US dollars"
 ```
 
@@ -310,8 +310,8 @@ console.log(
 Compare money instances:
 
 ```typescript
-const amount1 = new Money("100.00", "USD");
-const amount2 = new Money("200.00", "USD");
+const amount1 = new Money('100.00', 'USD');
+const amount2 = new Money('200.00', 'USD');
 
 // Simple comparisons
 const isEqual = amount1.equals(amount2); // false
@@ -333,7 +333,7 @@ const isNegative = amount1.isNegative(); // false
 Access the underlying values:
 
 ```typescript
-const amount = new Money("1234.56", "USD");
+const amount = new Money('1234.56', 'USD');
 
 // Get raw values
 console.log(amount.value()); // "1234.56"
@@ -350,7 +350,7 @@ console.log(amount.formattedValueWithSymbol()); // "$1,234.56"
 Convert to and from JSON:
 
 ```typescript
-const amount = new Money("1234.56", "USD");
+const amount = new Money('1234.56', 'USD');
 
 // Convert to JSON
 const json = amount.toJSON();
@@ -386,6 +386,7 @@ Creates a new Money instance.
 - `value`: The monetary value (string or number)
 - `currency`: Currency code (e.g., "USD", "EUR")
 - `options`: Optional configuration object
+
   ```typescript
   interface MoneyOptions {
     symbol?: string; // Custom currency symbol
@@ -539,8 +540,8 @@ const ROUNDING_MODE = {
 
 ```typescript
 const SYMBOL_POSITION = {
-  PREFIX: "prefix", // Symbol before amount
-  SUFFIX: "suffix", // Symbol after amount
+  PREFIX: 'prefix', // Symbol before amount
+  SUFFIX: 'suffix', // Symbol after amount
 } as const;
 ```
 
@@ -562,6 +563,9 @@ pnpm build
 
 # Run linter
 pnpm lint
+
+# Check types
+pnpm typecheck
 ```
 
 ## Testing
@@ -571,6 +575,9 @@ We use Vitest for testing. Run the test suite:
 ```bash
 # Run tests
 pnpm test
+
+# Run tests in watch mode
+pnpm test:watch
 
 # Run tests with coverage
 pnpm test:coverage

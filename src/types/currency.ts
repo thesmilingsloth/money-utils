@@ -1,4 +1,4 @@
-import { SYMBOL_POSITION } from "../constants/symbols";
+import type { SYMBOL_POSITION } from '../constants/symbols';
 
 /**
  * Represents the position of a currency symbol relative to the amount.
