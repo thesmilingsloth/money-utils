@@ -1,4 +1,4 @@
-import { ROUNDING_MODE } from "../constants/money";
+import { ROUNDING_MODE } from '../constants/money';
 
 /**
  * Type representing the available rounding modes for monetary calculations.

@@ -1,5 +1,5 @@
-import { Money } from "../core/Money";
-import { CurrencyConfig } from "./currency";
+import { Money } from '../core/Money';
+import { CurrencyConfig } from './currency';
 
 /**
  * Type guard to check if a value is a Money instance.
@@ -40,11 +40,11 @@ export const isMoney = (value: unknown): value is Money => {
  */
 export const isCurrencyConfig = (value: unknown): value is CurrencyConfig => {
   return (
-    typeof value === "object" &&
+    typeof value === 'object' &&
     value !== null &&
-    "code" in value &&
-    "symbol" in value &&
-    "name" in value
+    'code' in value &&
+    'symbol' in value &&
+    'name' in value
   );
 };
 

@@ -1,11 +1,11 @@
-import { BTC_CONFIG, ETH_CONFIG } from "../currencies/crypto";
+import { BTC_CONFIG, ETH_CONFIG } from '../currencies/crypto';
 import {
   EUR_CONFIG,
   GBP_CONFIG,
   JPY_CONFIG,
   USD_CONFIG,
-} from "../currencies/fiat";
-import { CurrencyConfig } from "../types/currency";
+} from '../currencies/fiat';
+import { CurrencyConfig } from '../types/currency';
 
 const DEFAULT_CURRENCIES = [
   USD_CONFIG,
@@ -23,7 +23,7 @@ const DEFAULT_CURRENCIES = [
 export class CurrencyError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = "CurrencyError";
+    this.name = 'CurrencyError';
   }
 }
 
@@ -61,7 +61,7 @@ export class Currency {
   private constructor() {
     // Initialize the map with default currencies directly, without using register
     this._currencies = new Map(
-      DEFAULT_CURRENCIES.map((currency) => [currency.code, currency])
+      DEFAULT_CURRENCIES.map((currency) => [currency.code, currency]),
     );
   }
 
@@ -235,7 +235,7 @@ export class Currency {
    */
   private validateCurrencyConfig(config: CurrencyConfig) {
     if (!config.code || !config.symbol || !config.name) {
-      throw new CurrencyError("Invalid currency configuration");
+      throw new CurrencyError('Invalid currency configuration');
     }
   }
 }
