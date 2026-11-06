@@ -22,11 +22,13 @@
     "build": "vite build",
     "prepack": "npm run build",
     "preview": "vite preview",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
     "format": "biome format --write .",
     "lint": "biome lint .",
-    "check": "biome check --apply ."
+    "check": "biome check ."
   },
   "keywords": [
     "money",
@@ -38,16 +40,17 @@
   "author": "Smiling Sloth",
   "license": "MIT",
   "dependencies": {
-    "decimal.js": "10.4.3"
+    "decimal.js": "10.6.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.5.3",
-    "@vitest/coverage-v8": "^1.2.2",
-    "terser": "^5.37.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.12",
-    "vite-plugin-dts": "^3.7.2",
-    "vitest": "^1.2.2"
+    "@biomejs/biome": "2.6.5",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "@vitest/coverage-v8": "^5.1.0",
+    "terser": "^5.51.2",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "vite": "^8.3.6",
+    "vite-plugin-dts": "^5.1.2",
+    "vitest": "^5.1.0"
   },
   "publishConfig": {
     "access": "public"

@@ -5,7 +5,7 @@ import {
   JPY_CONFIG,
   USD_CONFIG,
 } from '../currencies/fiat';
-import { CurrencyConfig } from '../types/currency';
+import type { CurrencyConfig } from '../types/currency';
 
 const DEFAULT_CURRENCIES = [
   USD_CONFIG,
@@ -141,7 +141,9 @@ export class Currency {
    */
   private unregisterCurrency(currency: CurrencyConfig | CurrencyConfig[]) {
     if (Array.isArray(currency)) {
-      currency.forEach((curr) => this._currencies.delete(curr.code));
+      for (const curr of currency) {
+        this._currencies.delete(curr.code);
+      }
     } else {
       this._currencies.delete(currency.code);
     }

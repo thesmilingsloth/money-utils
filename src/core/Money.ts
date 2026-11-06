@@ -2,8 +2,8 @@ import { Decimal } from 'decimal.js';
 import { ROUNDING_MODE } from '../constants/money';
 import { SYMBOL_POSITION } from '../constants/symbols';
 import { ERROR_MESSAGES, MoneyError } from '../errors/MoneyErrors';
-import { CurrencyConfig } from '../types/currency';
-import {
+import type { CurrencyConfig } from '../types/currency';
+import type {
   MoneyComparisonResult,
   MoneyObject,
   MoneyOptions,
@@ -58,7 +58,7 @@ export class Money {
       if (!decimal.isFinite()) {
         throw new MoneyError(ERROR_MESSAGES.INVALID_AMOUNT);
       }
-    } catch (error) {
+    } catch {
       throw new MoneyError(ERROR_MESSAGES.INVALID_AMOUNT);
     }
   }

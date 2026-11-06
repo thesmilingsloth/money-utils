@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { SYMBOL_POSITION } from '../../constants/symbols';
 import { Currency, CurrencyError } from '../../core/Currency';
-import { CurrencyConfig } from '../../types/currency';
+import type { CurrencyConfig } from '../../types/currency';
 
 describe('Currency', () => {
   const customCurrency: CurrencyConfig = {

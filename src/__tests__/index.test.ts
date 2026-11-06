@@ -7,6 +7,9 @@ import {
   ERROR_MESSAGES,
   // Fiat currencies
   FIAT_CURRENCY_CONFIGS,
+  isCurrencyConfig,
+  isMoney,
+  isValidCurrencyCode,
   // Core exports
   Money,
   // Error exports
@@ -21,9 +24,6 @@ import {
   // Constants
   ROUNDING_MODE,
   SYMBOL_POSITION,
-  isCurrencyConfig,
-  isMoney,
-  isValidCurrencyCode,
   // Utility exports
   validateMoneyInput,
 } from '../index';

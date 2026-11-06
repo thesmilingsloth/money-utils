@@ -1,5 +1,5 @@
 import { SYMBOL_POSITION } from '../constants/symbols';
-import { CurrencyConfig } from '../types/currency';
+import type { CurrencyConfig } from '../types/currency';
 
 export const BTC_CONFIG: CurrencyConfig = {
   name: 'Bitcoin',

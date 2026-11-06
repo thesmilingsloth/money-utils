@@ -16,8 +16,7 @@
     "noFallthroughCasesInSwitch": true,
     "declaration": true,
     "declarationDir": "./dist",
-    "outDir": "./dist",
-    "baseUrl": "."
+    "outDir": "./dist"
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "dist", "src/**/__tests__/**", "src/**/*.test.ts"]

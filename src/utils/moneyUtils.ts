@@ -1,6 +1,6 @@
 import { Decimal } from 'decimal.js';
 import { ERROR_MESSAGES } from '../errors/MoneyErrors';
-import { MoneyValidationResult, ValidMoneyInput } from '../types/money';
+import type { MoneyValidationResult, ValidMoneyInput } from '../types/money';
 
 export const validateMoneyInput = (
   value: ValidMoneyInput,

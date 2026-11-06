@@ -81,11 +81,15 @@ describe('Money Utilities', () => {
     it('handles precision edge cases', () => {
       // Numbers with many decimal places
       expect(validateMoneyInput('0.1234567890123456789').isValid).toBe(true);
-      expect(validateMoneyInput(0.1234567890123456789).isValid).toBe(true);
+      expect(validateMoneyInput(Number('0.1234567890123456789')).isValid).toBe(
+        true,
+      );
 
       // Very precise calculations
       expect(validateMoneyInput('0.1234567890123456789').isValid).toBe(true);
-      expect(validateMoneyInput(0.1234567890123456789).isValid).toBe(true);
+      expect(validateMoneyInput(Number('0.1234567890123456789')).isValid).toBe(
+        true,
+      );
     });
   });
 });

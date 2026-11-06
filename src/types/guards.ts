@@ -1,5 +1,5 @@
 import { Money } from '../core/Money';
-import { CurrencyConfig } from './currency';
+import type { CurrencyConfig } from './currency';
 
 /**
  * Type guard to check if a value is a Money instance.

@@ -42,7 +42,7 @@ describe('Money', () => {
     });
   });
 
-  describe('static methods', () => {
+  describe('static methods with options', () => {
     it('creates zero value instance', () => {
       const zero = Money.zero('USD');
 

@@ -5,7 +5,7 @@ import {
   DEFAULT_THOUSANDS_SEPARATOR,
   SYMBOL_POSITION,
 } from '../constants/symbols';
-import { CurrencyConfig } from '../types/currency';
+import type { CurrencyConfig } from '../types/currency';
 
 export const USD_CONFIG: CurrencyConfig = {
   name: 'United States Dollar',
